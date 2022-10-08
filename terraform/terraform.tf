@@ -1,13 +1,6 @@
 terraform {
   required_version = "~> 1.0"
 
-  backend "s3" {
-    bucket  = "terraform-state-bucket-20220507150748321300000001"
-    key     = "minikube-argocd/terraform.tfstate"
-    region  = "eu-central-1"
-    encrypt = true
-  }
-
   required_providers {
     minikube = {
       source  = "scott-the-programmer/minikube"
