@@ -1,16 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: nginx
+  name: datadog-agent
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
     repoURL: https://github.com/chiemerieezechukwu/argocd-app-config
     targetRevision: HEAD
-    path: charts/nginx/
+    path: charts/datadog-agent/
   destination:
     server: https://kubernetes.default.svc
-    namespace: nginx
+    namespace: datadog-agent
   syncPolicy:
     automated:
       prune: true

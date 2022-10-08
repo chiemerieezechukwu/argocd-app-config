@@ -1,7 +1,7 @@
 ## Ref: https://github.com/argoproj/argo-helm/blob/argo-cd-5.5.13/charts/argocd-apps/values.yaml
 # Values used by terraform to create the initial ArgoCD Application (app of apps)
 applications:
-  - name: argo-application
+  - name: root
     namespace: argocd
     project: default
     source:
