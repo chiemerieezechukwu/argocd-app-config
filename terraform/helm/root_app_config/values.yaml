@@ -12,7 +12,7 @@ applications:
         recurse: true
     destination:
       server: https://kubernetes.default.svc
-      namespace: myapp
+      namespace: rootapp
     syncPolicy:
       automated:
         prune: true
