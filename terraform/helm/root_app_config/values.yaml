@@ -2,14 +2,11 @@
 # Values used by terraform to create the initial ArgoCD Application (app of apps)
 applications:
   - name: root
-    namespace: argocd
     project: default
     source:
       repoURL: https://github.com/chiemerieezechukwu/argocd-app-config.git
       targetRevision: HEAD
-      path: apps/dev
-      directory:
-        recurse: true
+      path: apps/dev/
     destination:
       server: https://kubernetes.default.svc
       namespace: rootapp
@@ -17,5 +14,3 @@ applications:
       automated:
         prune: true
         selfHeal: true
-      syncOptions:
-        - CreateNamespace=true
