@@ -1,0 +1,21 @@
+## Ref: https://github.com/argoproj/argo-helm/blob/argo-cd-5.5.13/charts/argocd-apps/values.yaml
+# Values used by terraform to create the initial ArgoCD Application (app of apps)
+applications:
+  - name: argo-application
+    namespace: argocd
+    project: default
+    source:
+      repoURL: https://github.com/chiemerieezechukwu/argocd-app-config.git
+      targetRevision: HEAD
+      path: apps/dev
+      directory:
+        recurse: true
+    destination:
+      server: https://kubernetes.default.svc
+      namespace: myapp
+    syncPolicy:
+      automated:
+        prune: true
+        selfHeal: true
+      syncOptions:
+        - CreateNamespace=true
