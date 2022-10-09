@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: datadog-agent
+  name: first-helm-chart
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/chiemerieezechukwu/argocd-app-config
     targetRevision: HEAD
-    path: charts/datadog-agent/
+    path: charts/first-helm-chart/
   destination:
     server: https://kubernetes.default.svc
-    namespace: datadog-agent
+    namespace: first-helm-chart
   syncPolicy:
     automated:
       prune: true
