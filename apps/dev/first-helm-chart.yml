@@ -9,6 +9,9 @@ spec:
     repoURL: https://github.com/chiemerieezechukwu/argocd-app-config
     targetRevision: HEAD
     path: charts/first-helm-chart/
+    helm:
+      values: |
+        replicaCount: 2
   destination:
     server: https://kubernetes.default.svc
     namespace: first-helm-chart
