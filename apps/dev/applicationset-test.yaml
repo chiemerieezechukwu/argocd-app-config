@@ -22,6 +22,10 @@ spec:
         repoURL: https://github.com/chiemerieezechukwu/argocd-app-config
         targetRevision: HEAD
         path: charts/first-helm-chart/
+        helm:
+          values: |
+            replicaCount: {{  app.replicaSet }}
+            message: {{ app.message }}
       syncPolicy:
         automated:
           prune: true
