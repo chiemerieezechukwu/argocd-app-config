@@ -21,7 +21,7 @@ spec:
       source:
         repoURL: https://github.com/chiemerieezechukwu/argocd-app-config
         targetRevision: HEAD
-        path: apps/dev
+        path: charts/first-helm-chart/
       syncPolicy:
         automated:
           prune: true
