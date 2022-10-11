@@ -1,5 +1,5 @@
 app:
   replicaSet: 2
-  message: "Hello from first-app"
+  message: "Hello from olek from first-app"
   namespace: "first-app"
   name: "first-app"
