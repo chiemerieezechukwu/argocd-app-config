@@ -1,0 +1,5 @@
+app:
+  replicaSet: 2
+  message: "Hello from second-app"
+  namespace: "second-app"
+  name: "second-app"

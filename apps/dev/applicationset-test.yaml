@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: applicationset-test
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/chiemerieezechukwu/argocd-app-config.git
+        revision: HEAD
+        files:
+          - path: helm-values/**/*.yaml
+  template:
+    metadata:
+      name: '{{ app.name }}'
+    spec:
+      destination: 
+        namespace: '{{ app.namespace }}'
+        server: https://kubernetes.default.svc
+      project: default
+      source:
+        repoURL: https://github.com/chiemerieezechukwu/argocd-app-config
+        targetRevision: HEAD
+        path: apps/dev
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
