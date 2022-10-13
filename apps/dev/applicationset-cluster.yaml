@@ -5,10 +5,13 @@ metadata:
   namespace: argocd
 spec:
   generators:
-    - clusters: {}
+    - clusters:
+        selector:
+          matchLabels:
+            purpose: datastore
   template:
     metadata:
-      name: cluster-generator-first-app
+      name: cluster-generator-only-app
     spec:
       destination: 
         namespace: cluster-generator-first-app
