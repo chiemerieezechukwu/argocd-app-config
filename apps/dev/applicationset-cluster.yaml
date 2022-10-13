@@ -8,7 +8,7 @@ spec:
     - clusters:
         selector:
           matchLabels:
-            purpose: datastore
+            purpose: cluster-datastore
   template:
     metadata:
       name: cluster-generator-only-app
@@ -23,8 +23,13 @@ spec:
         path: charts/first-helm-chart/
         helm:
           values: |
+            test-annotation: {{ metadata.annotations.test-annotation }}
             message: {{ metadata.annotations.test-message }}
-            arn: {{ metadata.annotations.test-arn }}
+            random-pet-1: {{ metadata.annotations.custom-value-1 }}
+            random-pet-2: {{ metadata.annotations.custom-value-2 }}
+            random-pet-3: {{ metadata.annotations.custom-value-3 }}
+            random-pet-4: {{ metadata.annotations.custom-value-4 }}
+            random-pet-5: {{ metadata.annotations.custom-value-5 }}
       syncPolicy:
         automated:
           prune: true

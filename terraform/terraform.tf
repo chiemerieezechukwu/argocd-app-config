@@ -21,3 +21,10 @@ provider "helm" {
     client_key             = minikube_cluster.default.client_key
   }
 }
+
+provider "kubernetes" {
+  host                   = minikube_cluster.default.host
+  cluster_ca_certificate = minikube_cluster.default.cluster_ca_certificate
+  client_certificate     = minikube_cluster.default.client_certificate
+  client_key             = minikube_cluster.default.client_key
+}
