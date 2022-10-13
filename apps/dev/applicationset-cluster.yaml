@@ -1,21 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: applicationset-test
+  name: applicationset-cluster
   namespace: argocd
 spec:
   generators:
-    - git:
-        repoURL: https://github.com/chiemerieezechukwu/argocd-app-config.git
-        revision: HEAD
-        files:
-          - path: helm-values/**/*.yaml
+    - clusters: {}
   template:
     metadata:
-      name: 'git-generator-{{ app.name }}'
+      name: cluster-generator-first-app
     spec:
       destination: 
-        namespace: '{{ app.namespace }}'
+        namespace: cluster-generator-first-app
         server: https://kubernetes.default.svc
       project: default
       source:
@@ -24,8 +20,8 @@ spec:
         path: charts/first-helm-chart/
         helm:
           values: |
-            replicaCount: {{  app.replicaSet }}
-            message: {{ app.message }}
+            message: {{ metadata.annotations.test-message }}
+            arn: {{ metadata.annotations.test-arn }}
       syncPolicy:
         automated:
           prune: true
