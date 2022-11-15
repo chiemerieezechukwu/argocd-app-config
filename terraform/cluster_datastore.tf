@@ -5,6 +5,10 @@ resource "random_pet" "this" {
 }
 
 resource "kubernetes_manifest" "argocd_cluster_datastore" {
+  depends_on = [
+    minikube_cluster.default
+  ]
+
   manifest = {
     apiVersion = "v1"
     kind       = "Secret"
@@ -25,6 +29,7 @@ resource "kubernetes_manifest" "argocd_cluster_datastore" {
         custom-value-3  = random_pet.this[2].id
         custom-value-4  = random_pet.this[3].id
         custom-value-5  = random_pet.this[4].id
+        list-all-pets  = jsonencode([for i in range(0, 5) : random_pet.this[i].id])
       }
     }
     data = {

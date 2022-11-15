@@ -6,10 +6,15 @@ resource "helm_release" "argocd" {
   name             = "argocd"
   repository       = "https://argoproj.github.io/argo-helm"
   chart            = "argo-cd"
-  version          = "5.5.13"
+  version          = "5.13.8"
   namespace        = "argocd"
   create_namespace = true
   force_update     = true
+
+  set {
+    name  = "global.image.tag"
+    value = "v2.5.2"
+  }
 }
 
 resource "helm_release" "argocd_project" {

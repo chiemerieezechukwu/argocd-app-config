@@ -9,11 +9,12 @@ spec:
         selector:
           matchLabels:
             purpose: cluster-datastore
+  goTemplate: true
   template:
     metadata:
       name: cluster-generator-only-app
     spec:
-      destination: 
+      destination:
         namespace: cluster-generator-first-app
         server: https://kubernetes.default.svc
       project: default
@@ -23,13 +24,15 @@ spec:
         path: charts/first-helm-chart/
         helm:
           values: |
-            test-annotation: {{ metadata.annotations.test-annotation }}
-            message: {{ metadata.annotations.test-message }}
-            random-pet-1: {{ metadata.annotations.custom-value-1 }}
-            random-pet-2: {{ metadata.annotations.custom-value-2 }}
-            random-pet-3: {{ metadata.annotations.custom-value-3 }}
-            random-pet-4: {{ metadata.annotations.custom-value-4 }}
-            random-pet-5: {{ metadata.annotations.custom-value-5 }}
+            test-annotation: {{ index .metadata.annotations "test-annotation" }}
+            message: {{ index .metadata.annotations "test-message" }}
+            random-pet-1: {{ index .metadata.annotations "custom-value-1" }}
+            random-pet-2: {{ index .metadata.annotations "custom-value-2" }}
+            random-pet-3: {{ index .metadata.annotations "custom-value-3" }}
+            random-pet-4: {{ index .metadata.annotations "custom-value-4" }}
+            random-pet-5: {{ index .metadata.annotations "custom-value-5" }}
+            list-of-pets: {{ index .metadata.annotations "list-all-pets" }}
+            test: {{ splitList "," "a,b,c" }}
       syncPolicy:
         automated:
           prune: true

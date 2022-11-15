@@ -26,3 +26,11 @@ variable "cluster_datastore_name" {
   type        = string
   default     = "cluster-datastore"
 }
+
+variable "env" {
+  default = "dev"
+}
+
+variable "cluster_name" {
+  default = "applicationset-cluster"
+}
