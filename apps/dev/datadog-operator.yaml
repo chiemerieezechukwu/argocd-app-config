@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: datadog-operator-appset
+  namespace: argocd
+spec:
+  generators:
+    - clusters:
+        selector:
+          matchLabels:
+            purpose: cluster-datastore
+  goTemplate: true
+  template:
+    metadata:
+      name: datadog-operator
+    spec:
+      destination:
+        namespace: datadog-operator
+        server: https://kubernetes.default.svc
+      project: default
+      source:
+        repoURL: https://github.com/chiemerieezechukwu/argocd-app-config
+        targetRevision: HEAD
+        path: charts/datadog-operator/
+        helm:
+          values: |
+            test-annotation: {{ index .metadata.annotations "test-annotation" }}
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
