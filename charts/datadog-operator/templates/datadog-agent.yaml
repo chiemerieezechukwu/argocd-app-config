@@ -11,6 +11,9 @@ spec:
       secretName: datadog-secret
       keyName: app-key
   agent:
+    env:
+      - name: DD_KUBELET_TLS_VERIFY
+        value: "false"
     image:
       name: "gcr.io/datadoghq/agent:latest"
     apm:
