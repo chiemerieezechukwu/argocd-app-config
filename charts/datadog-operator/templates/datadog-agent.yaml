@@ -3,6 +3,7 @@ kind: DatadogAgent
 metadata:
   name: datadog
 spec:
+  site: datadoghq.eu
   credentials:
     apiSecret:
       secretName: datadog-secret
@@ -17,6 +18,8 @@ spec:
     image:
       name: "gcr.io/datadoghq/agent:latest"
     apm:
+      enabled: true
+    process:
       enabled: true
     log:
       enabled: true
