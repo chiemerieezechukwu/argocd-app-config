@@ -3,6 +3,7 @@ kind: DatadogAgent
 metadata:
   name: datadog
 spec:
+  clusterName: minikube-cluster
   site: datadoghq.eu
   credentials:
     apiSecret:
