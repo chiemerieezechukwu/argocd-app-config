@@ -9,10 +9,6 @@ spec:
     repoURL: https://github.com/chiemerieezechukwu/argocd-app-config
     targetRevision: HEAD
     path: charts/grafana/
-    helm:
-      parameters:
-        - name: readinessProbe.initialDelaySeconds
-          value: "60"
   destination:
     server: https://kubernetes.default.svc
     namespace: grafana
