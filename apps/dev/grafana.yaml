@@ -10,12 +10,9 @@ spec:
     targetRevision: HEAD
     path: charts/grafana/
     helm:
-      values: |
-        readinessProbe:
-          initialDelaySeconds: 45
-          httpGet:
-            path: /api/health
-            port: 3000
+      parameters:
+        - name: readinessProbe.initialDelaySeconds
+          value: "60"
   destination:
     server: https://kubernetes.default.svc
     namespace: grafana

@@ -68,6 +68,7 @@ readinessProbe:
   httpGet:
     path: /api/health
     port: 3000
+  # initialDelaySeconds: 45
 
 livenessProbe:
   httpGet:
