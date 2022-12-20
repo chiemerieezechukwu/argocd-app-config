@@ -9,6 +9,13 @@ spec:
     repoURL: https://github.com/chiemerieezechukwu/argocd-app-config
     targetRevision: HEAD
     path: charts/grafana/
+    helm:
+      values: |
+        readinessProbe:
+          initialDelaySeconds: 45
+          httpGet:
+            path: /api/health
+            port: 3000
   destination:
     server: https://kubernetes.default.svc
     namespace: grafana
