@@ -12,6 +12,6 @@ argo-cd:
           name: GitHub
           config:
             clientID: 7a7f9b02baa8d2cb8a3f
-            clientSecret: $dex.github.clientSecret # Alternatively $<some_K8S_secret>:dex.github.clientSecret
+            clientSecret: $argo-github-secret:dex.github.clientSecret # Alternatively $<some_K8S_secret>:dex.github.clientSecret
             orgs:
             - name: chiemerieezechukwu
