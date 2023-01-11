@@ -16,3 +16,6 @@ argo-cd:
             loadAllGroups: false
             # orgs:
             # - name: chiemerieezechukwu
+
+    rbac:
+      policy.default: role:readonly
