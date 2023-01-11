@@ -13,5 +13,6 @@ argo-cd:
           config:
             clientID: 7a7f9b02baa8d2cb8a3f
             clientSecret: $argo-github-secret:dex.github.clientSecret # Alternatively $<some_K8S_secret>:dex.github.clientSecret
+            loadAllGroups: false
             # orgs:
             # - name: chiemerieezechukwu
