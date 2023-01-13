@@ -1,4 +1,3 @@
-resource "minikube_cluster" "default" {
-  driver       = "docker"
-  cluster_name = "minikube-cluster"
+resource "kind_cluster" "default" {
+  name = "kind-cluster"
 }

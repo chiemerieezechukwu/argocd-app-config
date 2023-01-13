@@ -6,7 +6,7 @@ resource "random_pet" "this" {
 
 resource "kubernetes_manifest" "argocd_cluster_datastore" {
   depends_on = [
-    minikube_cluster.default
+    kind_cluster.default
   ]
 
   manifest = {

@@ -1,6 +1,6 @@
 resource "helm_release" "argocd" {
   depends_on = [
-    minikube_cluster.default
+    kind_cluster.default
   ]
 
   name             = "argocd"
