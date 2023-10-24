@@ -13,7 +13,7 @@ resource "helm_release" "argocd" {
 
   set {
     name  = "global.image.tag"
-    value = "v2.5.2"
+    value = "v2.8.4"
   }
 }
 
