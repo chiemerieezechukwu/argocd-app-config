@@ -1,6 +1,4 @@
 argo-cd:
-  redis:
-    compression: none
   configs:
     cm:
       url: https://localhost:8080

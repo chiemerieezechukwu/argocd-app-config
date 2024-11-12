@@ -19,7 +19,7 @@ spec:
         argo-cd:
           global:
             image:
-              tag: v2.11.2
+              tag: v2.13.0
       valueFiles:
         - values.yaml
   destination:
